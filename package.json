@@ -37,6 +37,9 @@
 	"dependencies": {
 		"@prisma/client": "^5.20.0",
 		"@supabase/ssr": "^0.5.1",
-		"@supabase/supabase-js": "^2.45.4"
+		"@supabase/supabase-js": "^2.45.4",
+		"@fortawesome/free-brands-svg-icons": "^6.6.0",
+		"@fortawesome/free-solid-svg-icons": "^6.6.0",
+		"svelte-fa": "^4.0.3"
 	}
 }
