@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id             String @id @default(uuid())
+  username       String @unique
+  profilePicture String
+
+  stats   Stats  @relation(fields: [statsId], references: [id])
+  statsId String @unique
+
+  list            List[]
+  watchedEpisodes Episode[]
+  followedShows   Show[]    @relation("FollowedShows")
+  lovedShows      Show[]    @relation("LovedShows")
+}
+
+model Stats {
+  id              String @id @default(uuid())
+  user            User?
+  loved           Int
+  followed        Int
+  seriesWatchTime Int
+  seriesWatched   Int
+  moviesWatchTime Int
+  moviesWatched   Int
+}
+
+model List {
+  id     String    @id @default(uuid())
+  name   String
+  user   User      @relation(fields: [userId], references: [id])
+  userId String
+  Shows  Show[]
+}
+
+enum Show_Type {
+  MOVIE
+  SERIES
+}
+
+model Show {
+  id        String    @id @default(uuid())
+  type      Show_Type
+  name      String
+  cover     String
+  list      List      @relation(fields: [listId], references: [id])
+  listId    String
+  updatedAt DateTime  @updatedAt
+  seasons   Season[]
+  episode   Episode[]
+  user      User[]    @relation("FollowedShows")
+  lovedBy   User[]    @relation("LovedShows")
+}
+
+model Season {
+  id        String    @id @default(uuid())
+  number    Int
+  show      Show      @relation(fields: [showId], references: [id])
+  showId    String
+  episodes  Episode[]
+  updatedAt DateTime  @updatedAt
+}
+
+model Episode {
+  id        String   @id @default(uuid())
+  number    Int
+  season    Season   @relation(fields: [seasonId], references: [id])
+  seasonId  String
+  show      Show     @relation(fields: [showId], references: [id])
+  showId    String
+  name      String
+  cover     String
+  duration  Int
+  updatedAt DateTime @updatedAt
+
+  User User[]
+}

@@ -7,6 +7,16 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@prisma/client':
+        specifier: ^5.20.0
+        version: 5.20.0(prisma@5.20.0)
+      '@supabase/ssr':
+        specifier: ^0.5.1
+        version: 0.5.1(@supabase/supabase-js@2.45.4)
+      '@supabase/supabase-js':
+        specifier: ^2.45.4
+        version: 2.45.4
     devDependencies:
       '@fontsource/fira-mono':
         specifier: ^5.0.0
@@ -16,19 +26,19 @@ importers:
         version: 2.2.1
       '@sveltejs/adapter-auto':
         specifier: ^3.0.0
-        version: 3.2.5(@sveltejs/kit@2.6.4(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1)))
+        version: 3.2.5(@sveltejs/kit@2.6.4(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)))
       '@sveltejs/kit':
         specifier: ^2.0.0
-        version: 2.6.4(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1))
+        version: 2.6.4(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1))
       '@sveltejs/vite-plugin-svelte':
         specifier: ^3.0.0
-        version: 3.1.2(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1))
+        version: 3.1.2(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1))
       '@types/eslint':
         specifier: ^9.6.0
         version: 9.6.1
       '@vite-pwa/sveltekit':
         specifier: ^0.6.5
-        version: 0.6.5(@sveltejs/kit@2.6.4(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1)))(vite-plugin-pwa@0.20.5(vite@5.4.8(sass@1.79.4)(terser@5.34.1))(workbox-build@7.1.1)(workbox-window@7.1.0))
+        version: 0.6.5(@sveltejs/kit@2.6.4(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)))(vite-plugin-pwa@0.20.5(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1))(workbox-build@7.1.1)(workbox-window@7.1.0))
       eslint:
         specifier: ^9.7.0
         version: 9.12.0
@@ -47,6 +57,9 @@ importers:
       prettier-plugin-svelte:
         specifier: ^3.2.5
         version: 3.2.7(prettier@3.3.3)(svelte@4.2.19)
+      prisma:
+        specifier: ^5.20.0
+        version: 5.20.0
       sass:
         specifier: ^1.79.4
         version: 1.79.4
@@ -64,7 +77,7 @@ importers:
         version: 8.8.1(eslint@9.12.0)(typescript@5.6.3)
       vite:
         specifier: ^5.0.3
-        version: 5.4.8(sass@1.79.4)(terser@5.34.1)
+        version: 5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)
 
 packages:
 
@@ -877,6 +890,30 @@ packages:
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
 
+  '@prisma/client@5.20.0':
+    resolution: {integrity: sha512-CLv55ZuMuUawMsxoqxGtLT3bEZoa2W8L3Qnp6rDIFWy+ZBrUcOFKdoeGPSnbBqxc3SkdxJrF+D1veN/WNynZYA==}
+    engines: {node: '>=16.13'}
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+
+  '@prisma/debug@5.20.0':
+    resolution: {integrity: sha512-oCx79MJ4HSujokA8S1g0xgZUGybD4SyIOydoHMngFYiwEwYDQ5tBQkK5XoEHuwOYDKUOKRn/J0MEymckc4IgsQ==}
+
+  '@prisma/engines-version@5.20.0-12.06fc58a368dc7be9fbbbe894adf8d445d208c284':
+    resolution: {integrity: sha512-Lg8AS5lpi0auZe2Mn4gjuCg081UZf88k3cn0RCwHgR+6cyHHpttPZBElJTHf83ZGsRNAmVCZCfUGA57WB4u4JA==}
+
+  '@prisma/engines@5.20.0':
+    resolution: {integrity: sha512-DtqkP+hcZvPEbj8t8dK5df2b7d3B8GNauKqaddRRqQBBlgkbdhJkxhoJTrOowlS3vaRt2iMCkU0+CSNn0KhqAQ==}
+
+  '@prisma/fetch-engine@5.20.0':
+    resolution: {integrity: sha512-JVcaPXC940wOGpCOwuqQRTz6I9SaBK0c1BAyC1pcz9xBi+dzFgUu3G/p9GV1FhFs9OKpfSpIhQfUJE9y00zhqw==}
+
+  '@prisma/get-platform@5.20.0':
+    resolution: {integrity: sha512-8/+CehTZZNzJlvuryRgc77hZCWrUDYd/PmlZ7p2yNXtmf2Una4BWnTbak3us6WVdqoz5wmptk6IhsXdG2v5fmA==}
+
   '@rollup/plugin-babel@5.3.1':
     resolution: {integrity: sha512-WFfdLWU/xVWKeRQnKmIAQULUI7Il0gZnBIH/ZFO069wYIfPu+8zrfp/KMW0atmELoRDq8FbiP3VCss9MhCut7Q==}
     engines: {node: '>= 10.0.0'}
@@ -1006,6 +1043,33 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@supabase/auth-js@2.65.0':
+    resolution: {integrity: sha512-+wboHfZufAE2Y612OsKeVP4rVOeGZzzMLD/Ac3HrTQkkY4qXNjI6Af9gtmxwccE5nFvTiF114FEbIQ1hRq5uUw==}
+
+  '@supabase/functions-js@2.4.1':
+    resolution: {integrity: sha512-8sZ2ibwHlf+WkHDUZJUXqqmPvWQ3UHN0W30behOJngVh/qHHekhJLCFbh0AjkE9/FqqXtf9eoVvmYgfCLk5tNA==}
+
+  '@supabase/node-fetch@2.6.15':
+    resolution: {integrity: sha512-1ibVeYUacxWYi9i0cf5efil6adJ9WRyZBLivgjs+AUpewx1F3xPi7gLgaASI2SmIQxPoCEjAsLAzKPgMJVgOUQ==}
+    engines: {node: 4.x || >=6.0.0}
+
+  '@supabase/postgrest-js@1.16.1':
+    resolution: {integrity: sha512-EOSEZFm5pPuCPGCmLF1VOCS78DfkSz600PBuvBND/IZmMciJ1pmsS3ss6TkB6UkuvTybYiBh7gKOYyxoEO3USA==}
+
+  '@supabase/realtime-js@2.10.2':
+    resolution: {integrity: sha512-qyCQaNg90HmJstsvr2aJNxK2zgoKh9ZZA8oqb7UT2LCh3mj9zpa3Iwu167AuyNxsxrUE8eEJ2yH6wLCij4EApA==}
+
+  '@supabase/ssr@0.5.1':
+    resolution: {integrity: sha512-+G94H/GZG0nErZ3FQV9yJmsC5Rj7dmcfCAwOt37hxeR1La+QTl8cE9whzYwPUrTJjMLGNXoO+1BMvVxwBAbz4g==}
+    peerDependencies:
+      '@supabase/supabase-js': ^2.43.4
+
+  '@supabase/storage-js@2.7.0':
+    resolution: {integrity: sha512-iZenEdO6Mx9iTR6T7wC7sk6KKsoDPLq8rdu5VRy7+JiT1i8fnqfcOr6mfF2Eaqky9VQzhP8zZKQYjzozB65Rig==}
+
+  '@supabase/supabase-js@2.45.4':
+    resolution: {integrity: sha512-E5p8/zOLaQ3a462MZnmnz03CrduA5ySH9hZyL03Y+QZLIOO4/Gs8Rdy4ZCKDHsN7x0xdanVEWWFN3pJFQr9/hg==}
+
   '@surma/rollup-plugin-off-main-thread@2.2.3':
     resolution: {integrity: sha512-lR8q/9W7hZpMWweNiAKU7NQerBnzQQLvi8qnTDU/fxItPhtZVMbPV3lbCwjhIlNBe9Bbr5V+KHshvWmVSG9cxQ==}
 
@@ -1053,11 +1117,20 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
+  '@types/node@22.7.5':
+    resolution: {integrity: sha512-jML7s2NAzMWc//QSJ1a3prpk78cOPchGvXJsC3C6R6PSMoooztvRVQEz89gmBTBY1SPMaqo5teB4uNHPdetShQ==}
+
+  '@types/phoenix@1.6.5':
+    resolution: {integrity: sha512-xegpDuR+z0UqG9fwHqNoy3rI7JDlvaPh2TY47Fl80oq6g+hXT+c/LEuE43X48clZ6lOfANl5WrPur9fYO1RJ/w==}
+
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
 
   '@types/trusted-types@2.0.7':
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
+
+  '@types/ws@8.5.12':
+    resolution: {integrity: sha512-3tPRkv1EtkDpzlgyKyI8pGsGZAGPEaXeu0DOj5DI25Ja91bdAYddYHbADRYVrZMRbfW+1l5YwXVDKohDJNQxkQ==}
 
   '@typescript-eslint/eslint-plugin@8.8.1':
     resolution: {integrity: sha512-xfvdgA8AP/vxHgtgU310+WBnLB4uJQ9XdyP17RebG26rLtDrQJV3ZYrcopX91GrHmMoH8bdSwMRh2a//TiJ1jQ==}
@@ -2013,6 +2086,11 @@ packages:
     resolution: {integrity: sha512-mQUvGU6aUFQ+rNvTIAcZuWGRT9a6f6Yrg9bHs4ImKF+HZCEK+plBvnAZYSIQztknZF2qnzNtr6F8s0+IuptdlQ==}
     engines: {node: ^14.13.1 || >=16.0.0}
 
+  prisma@5.20.0:
+    resolution: {integrity: sha512-6obb3ucKgAnsGS9x9gLOe8qa51XxvJ3vLQtmyf52CTey1Qcez3A6W6ROH5HIz5Q5bW+0VpmZb8WBohieMFGpig==}
+    engines: {node: '>=16.13'}
+    hasBin: true
+
   punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
@@ -2266,6 +2344,9 @@ packages:
     resolution: {integrity: sha512-sf4i37nQ2LBx4m3wB74y+ubopq6W/dIzXg0FDGjsYnZHVa1Da8FH853wlL2gtUhg+xJXjfk3kUZS3BRoQeoQBQ==}
     engines: {node: '>=6'}
 
+  tr46@0.0.3:
+    resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
+
   tr46@1.0.1:
     resolution: {integrity: sha512-dTpowEjclQ7Kgx5SdBkqRzVhERQXov8/l9Ft9dVM9fmg0W0KQSVaXX9T4i6twCPNtYiZM53lpSSUAwJbFPOHxA==}
 
@@ -2315,6 +2396,9 @@ packages:
 
   unbox-primitive@1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
+
+  undici-types@6.19.8:
+    resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
 
   unicode-canonical-property-names-ecmascript@2.0.1:
     resolution: {integrity: sha512-dA8WbNeb2a6oQzAQ55YlT5vQAWGV9WXOsi3SskE3bcCdM0P4SDd+24zS/OCacdRq5BkdsRj9q3Pg6YyQoxIGqg==}
@@ -2407,8 +2491,14 @@ packages:
       vite:
         optional: true
 
+  webidl-conversions@3.0.1:
+    resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
+
   webidl-conversions@4.0.2:
     resolution: {integrity: sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==}
+
+  whatwg-url@5.0.0:
+    resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
 
   whatwg-url@7.1.0:
     resolution: {integrity: sha512-WUu7Rg1DroM7oQvGWfOiAK21n74Gg+T4elXEQYkOhtyLeWiJFoOGLXPKI/9gzIie9CtwVLm8wtw6YJdKyxSjeg==}
@@ -2480,6 +2570,18 @@ packages:
 
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
+
+  ws@8.18.0:
+    resolution: {integrity: sha512-8VbfWfHLbbwu3+N6OKsOMpBdT4kXPDDB9cJk2bJ6mh9ucxdlnNvH1e+roYkKmN9Nxw2yjz7VzeO9oOz2zJ04Pw==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
 
   yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
@@ -3424,6 +3526,31 @@ snapshots:
 
   '@polka/url@1.0.0-next.28': {}
 
+  '@prisma/client@5.20.0(prisma@5.20.0)':
+    optionalDependencies:
+      prisma: 5.20.0
+
+  '@prisma/debug@5.20.0': {}
+
+  '@prisma/engines-version@5.20.0-12.06fc58a368dc7be9fbbbe894adf8d445d208c284': {}
+
+  '@prisma/engines@5.20.0':
+    dependencies:
+      '@prisma/debug': 5.20.0
+      '@prisma/engines-version': 5.20.0-12.06fc58a368dc7be9fbbbe894adf8d445d208c284
+      '@prisma/fetch-engine': 5.20.0
+      '@prisma/get-platform': 5.20.0
+
+  '@prisma/fetch-engine@5.20.0':
+    dependencies:
+      '@prisma/debug': 5.20.0
+      '@prisma/engines-version': 5.20.0-12.06fc58a368dc7be9fbbbe894adf8d445d208c284
+      '@prisma/get-platform': 5.20.0
+
+  '@prisma/get-platform@5.20.0':
+    dependencies:
+      '@prisma/debug': 5.20.0
+
   '@rollup/plugin-babel@5.3.1(@babel/core@7.25.7)(rollup@2.79.2)':
     dependencies:
       '@babel/core': 7.25.7
@@ -3520,6 +3647,53 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.24.0':
     optional: true
 
+  '@supabase/auth-js@2.65.0':
+    dependencies:
+      '@supabase/node-fetch': 2.6.15
+
+  '@supabase/functions-js@2.4.1':
+    dependencies:
+      '@supabase/node-fetch': 2.6.15
+
+  '@supabase/node-fetch@2.6.15':
+    dependencies:
+      whatwg-url: 5.0.0
+
+  '@supabase/postgrest-js@1.16.1':
+    dependencies:
+      '@supabase/node-fetch': 2.6.15
+
+  '@supabase/realtime-js@2.10.2':
+    dependencies:
+      '@supabase/node-fetch': 2.6.15
+      '@types/phoenix': 1.6.5
+      '@types/ws': 8.5.12
+      ws: 8.18.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
+  '@supabase/ssr@0.5.1(@supabase/supabase-js@2.45.4)':
+    dependencies:
+      '@supabase/supabase-js': 2.45.4
+      cookie: 0.6.0
+
+  '@supabase/storage-js@2.7.0':
+    dependencies:
+      '@supabase/node-fetch': 2.6.15
+
+  '@supabase/supabase-js@2.45.4':
+    dependencies:
+      '@supabase/auth-js': 2.65.0
+      '@supabase/functions-js': 2.4.1
+      '@supabase/node-fetch': 2.6.15
+      '@supabase/postgrest-js': 1.16.1
+      '@supabase/realtime-js': 2.10.2
+      '@supabase/storage-js': 2.7.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   '@surma/rollup-plugin-off-main-thread@2.2.3':
     dependencies:
       ejs: 3.1.10
@@ -3527,14 +3701,14 @@ snapshots:
       magic-string: 0.25.9
       string.prototype.matchall: 4.0.11
 
-  '@sveltejs/adapter-auto@3.2.5(@sveltejs/kit@2.6.4(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1)))':
+  '@sveltejs/adapter-auto@3.2.5(@sveltejs/kit@2.6.4(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)))':
     dependencies:
-      '@sveltejs/kit': 2.6.4(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1))
+      '@sveltejs/kit': 2.6.4(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1))
       import-meta-resolve: 4.1.0
 
-  '@sveltejs/kit@2.6.4(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1))':
+  '@sveltejs/kit@2.6.4(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 3.1.2(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1))
+      '@sveltejs/vite-plugin-svelte': 3.1.2(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1))
       '@types/cookie': 0.6.0
       cookie: 0.6.0
       devalue: 5.1.1
@@ -3548,28 +3722,28 @@ snapshots:
       sirv: 2.0.4
       svelte: 4.2.19
       tiny-glob: 0.2.9
-      vite: 5.4.8(sass@1.79.4)(terser@5.34.1)
+      vite: 5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)
 
-  '@sveltejs/vite-plugin-svelte-inspector@2.1.0(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1))':
+  '@sveltejs/vite-plugin-svelte-inspector@2.1.0(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 3.1.2(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1))
+      '@sveltejs/vite-plugin-svelte': 3.1.2(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1))
       debug: 4.3.7
       svelte: 4.2.19
-      vite: 5.4.8(sass@1.79.4)(terser@5.34.1)
+      vite: 5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1))':
+  '@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 2.1.0(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1))
+      '@sveltejs/vite-plugin-svelte-inspector': 2.1.0(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1))
       debug: 4.3.7
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.11
       svelte: 4.2.19
       svelte-hmr: 0.16.0(svelte@4.2.19)
-      vite: 5.4.8(sass@1.79.4)(terser@5.34.1)
-      vitefu: 0.2.5(vite@5.4.8(sass@1.79.4)(terser@5.34.1))
+      vite: 5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)
+      vitefu: 0.2.5(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1))
     transitivePeerDependencies:
       - supports-color
 
@@ -3586,9 +3760,19 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
+  '@types/node@22.7.5':
+    dependencies:
+      undici-types: 6.19.8
+
+  '@types/phoenix@1.6.5': {}
+
   '@types/resolve@1.20.2': {}
 
   '@types/trusted-types@2.0.7': {}
+
+  '@types/ws@8.5.12':
+    dependencies:
+      '@types/node': 22.7.5
 
   '@typescript-eslint/eslint-plugin@8.8.1(@typescript-eslint/parser@8.8.1(eslint@9.12.0)(typescript@5.6.3))(eslint@9.12.0)(typescript@5.6.3)':
     dependencies:
@@ -3671,11 +3855,11 @@ snapshots:
       '@typescript-eslint/types': 8.8.1
       eslint-visitor-keys: 3.4.3
 
-  '@vite-pwa/sveltekit@0.6.5(@sveltejs/kit@2.6.4(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1)))(vite-plugin-pwa@0.20.5(vite@5.4.8(sass@1.79.4)(terser@5.34.1))(workbox-build@7.1.1)(workbox-window@7.1.0))':
+  '@vite-pwa/sveltekit@0.6.5(@sveltejs/kit@2.6.4(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)))(vite-plugin-pwa@0.20.5(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1))(workbox-build@7.1.1)(workbox-window@7.1.0))':
     dependencies:
-      '@sveltejs/kit': 2.6.4(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(sass@1.79.4)(terser@5.34.1))
+      '@sveltejs/kit': 2.6.4(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)))(svelte@4.2.19)(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1))
       kolorist: 1.8.0
-      vite-plugin-pwa: 0.20.5(vite@5.4.8(sass@1.79.4)(terser@5.34.1))(workbox-build@7.1.1)(workbox-window@7.1.0)
+      vite-plugin-pwa: 0.20.5(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1))(workbox-build@7.1.1)(workbox-window@7.1.0)
 
   acorn-jsx@5.3.2(acorn@8.12.1):
     dependencies:
@@ -4600,6 +4784,12 @@ snapshots:
 
   pretty-bytes@6.1.1: {}
 
+  prisma@5.20.0:
+    dependencies:
+      '@prisma/engines': 5.20.0
+    optionalDependencies:
+      fsevents: 2.3.3
+
   punycode@2.3.1: {}
 
   queue-microtask@1.2.3: {}
@@ -4906,6 +5096,8 @@ snapshots:
 
   totalist@3.0.1: {}
 
+  tr46@0.0.3: {}
+
   tr46@1.0.1:
     dependencies:
       punycode: 2.3.1
@@ -4972,6 +5164,8 @@ snapshots:
       has-symbols: 1.0.3
       which-boxed-primitive: 1.0.2
 
+  undici-types@6.19.8: {}
+
   unicode-canonical-property-names-ecmascript@2.0.1: {}
 
   unicode-match-property-ecmascript@2.0.0:
@@ -5003,32 +5197,40 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  vite-plugin-pwa@0.20.5(vite@5.4.8(sass@1.79.4)(terser@5.34.1))(workbox-build@7.1.1)(workbox-window@7.1.0):
+  vite-plugin-pwa@0.20.5(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1))(workbox-build@7.1.1)(workbox-window@7.1.0):
     dependencies:
       debug: 4.3.7
       pretty-bytes: 6.1.1
       tinyglobby: 0.2.9
-      vite: 5.4.8(sass@1.79.4)(terser@5.34.1)
+      vite: 5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)
       workbox-build: 7.1.1
       workbox-window: 7.1.0
     transitivePeerDependencies:
       - supports-color
 
-  vite@5.4.8(sass@1.79.4)(terser@5.34.1):
+  vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.47
       rollup: 4.24.0
     optionalDependencies:
+      '@types/node': 22.7.5
       fsevents: 2.3.3
       sass: 1.79.4
       terser: 5.34.1
 
-  vitefu@0.2.5(vite@5.4.8(sass@1.79.4)(terser@5.34.1)):
+  vitefu@0.2.5(vite@5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)):
     optionalDependencies:
-      vite: 5.4.8(sass@1.79.4)(terser@5.34.1)
+      vite: 5.4.8(@types/node@22.7.5)(sass@1.79.4)(terser@5.34.1)
+
+  webidl-conversions@3.0.1: {}
 
   webidl-conversions@4.0.2: {}
+
+  whatwg-url@5.0.0:
+    dependencies:
+      tr46: 0.0.3
+      webidl-conversions: 3.0.1
 
   whatwg-url@7.1.0:
     dependencies:
@@ -5172,6 +5374,8 @@ snapshots:
       workbox-core: 7.1.0
 
   wrappy@1.0.2: {}
+
+  ws@8.18.0: {}
 
   yallist@3.1.1: {}
 
