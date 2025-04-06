@@ -16,6 +16,7 @@
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"@tauri-apps/cli": "^2.4.1",
 		"@types/eslint": "^9.6.0",
 		"@vite-pwa/sveltekit": "^0.6.5",
 		"eslint": "^9.7.0",
@@ -35,11 +36,11 @@
 	"type": "module",
 	"packageManager": "pnpm@9.7.1+sha512.faf344af2d6ca65c4c5c8c2224ea77a81a5e8859cbc4e06b1511ddce2f0151512431dd19e6aff31f2c6a8f5f2aced9bd2273e1fed7dd4de1868984059d2c4247",
 	"dependencies": {
+		"@fortawesome/free-brands-svg-icons": "^6.6.0",
+		"@fortawesome/free-solid-svg-icons": "^6.6.0",
 		"@prisma/client": "^5.20.0",
 		"@supabase/ssr": "^0.5.1",
 		"@supabase/supabase-js": "^2.45.4",
-		"@fortawesome/free-brands-svg-icons": "^6.6.0",
-		"@fortawesome/free-solid-svg-icons": "^6.6.0",
 		"svelte-fa": "^4.0.3"
 	}
 }
