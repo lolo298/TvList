@@ -51,5 +51,7 @@
         right: 0;
         border-top: #9a9a9a 1px solid;
         padding-top: 1em;
+        z-index: 999;
+        background-color: var(--background-color);
     }
 </style>
