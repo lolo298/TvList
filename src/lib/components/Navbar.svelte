@@ -6,19 +6,19 @@
 <nav>
     <ul>
         <li>
-            <Fa icon={faTv} />
+            <Fa icon={faTv} size="2.5x"/>
             <a href="#">Séries</a>
         </li>
         <li>
-            <Fa icon={faFilm} />
+            <Fa icon={faFilm} size="2.5x"/>
             <a href="#">Films</a>
         </li>
         <li>
-            <Fa icon={faMagnifyingGlass} />
+            <Fa icon={faMagnifyingGlass} size="2.5x"/>
             <a href="#">Recherche</a>
         </li>
         <li>
-            <Fa icon={faUser} />
+            <Fa icon={faUser} size="2.5x"/>
             <a href="#">Profil</a>
         </li>
     </ul>
@@ -31,7 +31,25 @@
         justify-content: space-around;
         list-style-type: none;
     }
+    li{
+        display: flex;
+        flex-direction: column;
+        color: #9a9a9a;
+    }
+    a{
+        text-decoration: none;
+        color: #9a9a9a;
+        margin: 0.5em;
+        font-size: large;
+    }
     nav{
-        padding: 1em;
+        padding: 0.5em;
+        font-family: "Jersey 20";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-top: #9a9a9a 1px solid;
+        padding-top: 1em;
     }
 </style>

@@ -13,8 +13,8 @@
 		"windows": [
 			{
 				"title": "tvlist",
-				"width": 800,
-				"height": 600,
+				"width": 393,
+				"height": 852,
 				"resizable": true,
 				"fullscreen": false
 			}
