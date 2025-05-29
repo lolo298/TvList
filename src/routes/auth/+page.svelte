@@ -37,4 +37,17 @@
 		align-items: center;
 		justify-content: center;
 	}
+
+    button {
+        background-color: transparent;
+        color: white;
+        border: solid 1px #555;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+    button:hover {
+        background-color: #555;
+    }
 </style>
