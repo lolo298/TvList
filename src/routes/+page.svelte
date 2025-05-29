@@ -7,10 +7,12 @@
 	import EditProfileButton from '$lib/components/Edit_Profile_Button.svelte';
 	import EpisodeInformation from '$lib/components/Episode_Information.svelte';
 	import ExitButton from '$lib/components/Exit_Button.svelte';
+	import Filter from '$lib/components/Filter.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import PlayButton from '$lib/components/Play_Button.svelte';
 	import ProfileList from '$lib/components/Profile_List.svelte';
 	import ProfilePicture from '$lib/components/Profile_Picture.svelte';
+	import SearchList from '$lib/components/Search_List.svelte';
 	import Star from '$lib/components/Star.svelte';
 	import Tags from '$lib/components/Tags.svelte';
 	import Topbar from '$lib/components/Topbar.svelte';
@@ -23,7 +25,5 @@
 		{#snippet title()}Oshi No Ko{/snippet}
 		{#snippet info()}blabla{/snippet}
 	</EpisodeInformation>
-	<ProfileList>{#snippet name()}
-		Liste 1
-	{/snippet}</ProfileList>
+	<SearchList isActive={true}>Oshi no Ko</SearchList>
 </section>
