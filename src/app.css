@@ -1,8 +1,8 @@
 html {
-    background-color: var(--background-color);
-    font-family: "Jersey 20";
+	background-color: var(--background-color);
+	font-family: 'Jersey 20';
 }
 
-:root{
-    --background-color: #2e2e2e;
+:root {
+	--background-color: #2e2e2e;
 }

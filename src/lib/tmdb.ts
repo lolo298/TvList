@@ -2,7 +2,7 @@ import { TMDB_API_KEY } from '$env/static/private';
 import { PrismaClient, type Show } from '@prisma/client';
 import type { MovieDetail, SerieDetail, SeasonDetail } from '$lib/types/api';
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 const fetch = function (input: RequestInfo, init?: RequestInit | undefined): Promise<Response> {
 	const headers = new Headers(init?.headers);
@@ -20,7 +20,7 @@ export async function getMovie(id: number) {
 			tmdbId: id,
 			type: 'MOVIE'
 		}
-	})
+	});
 	// Movie found in the database
 	if (bddResult) {
 		console.log(`Movie with ID ${id} found in the database.`);
@@ -33,7 +33,7 @@ export async function getMovie(id: number) {
 	if (!response.ok) {
 		throw new Error(`Error fetching movie with ID ${id}: ${response.statusText}`);
 	}
-	const data: MovieDetail  = await response.json();
+	const data: MovieDetail = await response.json();
 	// Add the movie to the database
 	const res = await prisma.show.create({
 		data: {
@@ -42,7 +42,7 @@ export async function getMovie(id: number) {
 			name: data.title,
 			type: 'MOVIE',
 			popularity: data.popularity,
-			cover: data.poster_path,
+			cover: data.poster_path
 		}
 	});
 	return res as Show;
@@ -59,7 +59,7 @@ export async function getSerie(id: number) {
 		include: {
 			seasons: true
 		}
-	})
+	});
 	// Movie found in the database
 	if (bddResult) {
 		return bddResult;
@@ -70,33 +70,36 @@ export async function getSerie(id: number) {
 	if (!response.ok) {
 		throw new Error(`Error fetching serie with ID ${id}: ${response.statusText}`);
 	}
-	const data: SerieDetail  = await response.json();
+	const data: SerieDetail = await response.json();
 
-	const seasonsCreate = await Promise.all(data.seasons.map(async season => {
-					
-					const seasonResponse = await fetch(`https://api.themoviedb.org/3/tv/${id}/season/${season.season_number}`);
-					if (!seasonResponse.ok) {
-						throw new Error(`Error fetching season ${season.season_number} for serie with ID ${id}: ${seasonResponse.statusText}`);
-					}
-					const seasonData: SeasonDetail = await seasonResponse.json();
+	const seasonsCreate = await Promise.all(
+		data.seasons.map(async (season) => {
+			const seasonResponse = await fetch(
+				`https://api.themoviedb.org/3/tv/${id}/season/${season.season_number}`
+			);
+			if (!seasonResponse.ok) {
+				throw new Error(
+					`Error fetching season ${season.season_number} for serie with ID ${id}: ${seasonResponse.statusText}`
+				);
+			}
+			const seasonData: SeasonDetail = await seasonResponse.json();
 
-
-					return {
-					number: season.season_number,
-					updatedAt: new Date(),
-					tmdbId: seasonData.id,
-					episodes: {
-						create: seasonData.episodes.map(episode => ({
-							tmdbId: episode.id,
-							number: episode.episode_number,
-							name: episode.name,
-							cover: episode.still_path,
-							duration: episode.runtime,
-						}))
-					}
-				
-				}}))
-
+			return {
+				number: season.season_number,
+				updatedAt: new Date(),
+				tmdbId: seasonData.id,
+				episodes: {
+					create: seasonData.episodes.map((episode) => ({
+						tmdbId: episode.id,
+						number: episode.episode_number,
+						name: episode.name,
+						cover: episode.still_path,
+						duration: episode.runtime
+					}))
+				}
+			};
+		})
+	);
 
 	// Add the movie to the database
 	const res = await prisma.show.create({
@@ -110,7 +113,6 @@ export async function getSerie(id: number) {
 			seasons: {
 				create: seasonsCreate
 			}
-			
 		}
 	});
 	return res as Show;
