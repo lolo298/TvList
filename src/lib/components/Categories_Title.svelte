@@ -9,7 +9,6 @@
         width: 100%;
         color: #9a9a9a;
         text-transform: uppercase;
-        font-family: "Jersey 20";
         font-size: larger;
         box-sizing: border-box;
     }

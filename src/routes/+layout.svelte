@@ -1,6 +1,6 @@
 <script>
-    import '../app.css'
     import '../reset.css'
+    import '../app.css'
 </script>
 
 <slot />
