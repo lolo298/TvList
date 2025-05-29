@@ -21,12 +21,12 @@
 	import Star from '$lib/components/Star.svelte';
 	import Tags from '$lib/components/Tags.svelte';
 	import Topbar from '$lib/components/Topbar.svelte';
+
+	const { data } = $props();
+	const { prefs } = $derived(data);
 </script>
 
 <section>
 	<Topbar />
-	<ButtonViewMode state={true}></ButtonViewMode>
-	<CategoriesTitle>En cours</CategoriesTitle>
-	<CoverBlock showProgress={true}></CoverBlock>
-	<CategoriesTitle>Pas commencés</CategoriesTitle>
+	<p>{prefs.defaultPage}</p>
 </section>

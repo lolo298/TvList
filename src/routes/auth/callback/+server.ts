@@ -17,34 +17,34 @@ export const GET = async (event) => {
 				data: { user }
 			} = await supabase.auth.getUser();
 
-            if (!user) {
-                console.error('No user found after exchanging code for session');
-                throw redirect(303, '/auth?error=no_user_found');
-            }
+			if (!user) {
+				console.error('No user found after exchanging code for session');
+				throw redirect(303, '/auth?error=no_user_found');
+			}
 
 			await prisma.user.upsert({
 				where: { id: user?.id },
-                update: {
-                    profilePicture: user.user_metadata?.avatar_url ?? '',
-                    username: user.user_metadata?.name ?? '',
-                },
+				update: {
+					profilePicture: user.user_metadata?.avatar_url ?? '',
+					username: user.user_metadata?.name ?? ''
+				},
 				create: {
 					id: user.id,
 					username: user.user_metadata?.name ?? '',
-                    profilePicture: user.user_metadata?.avatar_url ?? '',
-                    stats: {
-                        create: {
-                            followed: 0,
-                            loved: 0,
-                            moviesWatched: 0,
-                            moviesWatchTime: 0,
-                            seriesWatched: 0,
-                            seriesWatchTime: 0,
-                        }
-                    },
-                    preferences: {
-                        create: {}
-                    }
+					profilePicture: user.user_metadata?.avatar_url ?? '',
+					stats: {
+						create: {
+							followed: 0,
+							loved: 0,
+							moviesWatched: 0,
+							moviesWatchTime: 0,
+							seriesWatched: 0,
+							seriesWatchTime: 0
+						}
+					},
+					preferences: {
+						create: {}
+					}
 				}
 			});
 

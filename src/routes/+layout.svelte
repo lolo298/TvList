@@ -3,7 +3,7 @@
 	import '../app.css';
 
 	import { invalidate } from '$app/navigation';
-	import { onMount } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
 
 	let { data, children } = $props();

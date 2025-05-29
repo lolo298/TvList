@@ -4,15 +4,15 @@
 </script>
 
 <div>
-    <Fa icon={faPen} size="2x"/>
+	<Fa icon={faPen} size="2x" />
 </div>
 
 <style>
-    div{
-        background-color: #414141;
-        width: max-content;
-        color: #D9D9D9;
-        padding: 0.5em;
-        border-radius: 10px;
-    }
+	div {
+		background-color: #414141;
+		width: max-content;
+		color: #d9d9d9;
+		padding: 0.5em;
+		border-radius: 10px;
+	}
 </style>

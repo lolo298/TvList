@@ -3,4 +3,4 @@
 	import { faCircleXmark } from '@fortawesome/free-regular-svg-icons';
 </script>
 
-<Fa icon={faCircleXmark} size="3x" color="#000000"/>
+<Fa icon={faCircleXmark} size="3x" color="#000000" />

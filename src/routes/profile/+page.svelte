@@ -3,9 +3,11 @@
 	import ProfileList from '$lib/components/Profile_List.svelte';
 	import ProfilePicture from '$lib/components/Profile_Picture.svelte';
 
-    const { data } = $props();
-    const { user } = $derived(data);
+	const { data } = $props();
+	const { user } = $derived(data);
 </script>
 
-<ProfilePicture {user} />
-<DataProfile stats={user.stats} />
+{#if user}
+	<ProfilePicture {user} />
+	<DataProfile stats={user.stats} />
+{/if}

@@ -58,7 +58,7 @@
 		border: solid 2px #74a9b5;
 		border-radius: 10px;
 		position: relative;
-        overflow: hidden;
+		overflow: hidden;
 	}
 	.info {
 		display: flex;

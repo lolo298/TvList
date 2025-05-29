@@ -35,7 +35,7 @@
 		font-size: large;
 		margin: 0.3em;
 	}
-	span{
+	span {
 		margin-top: 0.5em;
 	}
 </style>
