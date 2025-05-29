@@ -1,6 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
 import { type Handle, redirect } from '@sveltejs/kit'
 import { sequence } from '@sveltejs/kit/hooks'
+import { PrismaClient } from '@prisma/client'
 
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public'
 
@@ -47,6 +48,11 @@ const supabase: Handle = async ({ event, resolve }) => {
       // JWT validation has failed
       return { session: null, user: null }
     }
+
+    const prisma = new PrismaClient()
+
+
+
 
     return { session, user }
   }
