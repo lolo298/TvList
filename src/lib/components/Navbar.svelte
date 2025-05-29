@@ -9,7 +9,7 @@
 			<ButtonNavbar icon={faTv} isActive={false} href="/">Series</ButtonNavbar>
 		</li>
 		<li>
-			<ButtonNavbar icon={faFilm} isActive={false}>Films</ButtonNavbar>
+			<ButtonNavbar icon={faFilm} isActive={false} href="/films">Films</ButtonNavbar>
 		</li>
 		<li>
 			<ButtonNavbar icon={faMagnifyingGlass} isActive={false} href="/search">Recherche</ButtonNavbar>
