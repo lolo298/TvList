@@ -1,4 +1,5 @@
 <script>
+	import Arrow from '$lib/components/Arrow.svelte';
 	import Button from '$lib/components/Button_View_Mode.svelte';
 	import CatTitle from '$lib/components/Categories_Title.svelte';
 	import Cover from '$lib/components/Cover_Block.svelte';
@@ -10,6 +11,7 @@
 	import Filter from '$lib/components/Filter.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import PlayButton from '$lib/components/Play_Button.svelte';
+	import Plus from '$lib/components/Plus.svelte';
 	import ProfileList from '$lib/components/Profile_List.svelte';
 	import ProfilePicture from '$lib/components/Profile_Picture.svelte';
 	import SearchList from '$lib/components/Search_List.svelte';
@@ -24,4 +26,6 @@
 		{#snippet title()}Oshi No Ko{/snippet}
 		{#snippet info()}blabla{/snippet}
 	</EpisodeInformation>
+	<SearchList isActive={true}>Oshi no Ko</SearchList>
+	<Arrow/>
 </section>
