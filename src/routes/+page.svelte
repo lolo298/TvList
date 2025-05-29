@@ -1,7 +1,10 @@
 <script>
 	import Arrow from '$lib/components/Arrow.svelte';
+	import ButtonViewMode from '$lib/components/Button_View_Mode.svelte';
 	import Button from '$lib/components/Button_View_Mode.svelte';
+	import CategoriesTitle from '$lib/components/Categories_Title.svelte';
 	import CatTitle from '$lib/components/Categories_Title.svelte';
+	import CoverBlock from '$lib/components/Cover_Block.svelte';
 	import Cover from '$lib/components/Cover_Block.svelte';
 	import CoverList from '$lib/components/Cover_List.svelte';
 	import DataProfile from '$lib/components/Data_Profile.svelte';
@@ -22,10 +25,8 @@
 
 <section>
 	<Topbar />
-	<EpisodeInformation episode={1} time={25}>
-		{#snippet title()}Oshi No Ko{/snippet}
-		{#snippet info()}blabla{/snippet}
-	</EpisodeInformation>
-	<SearchList isActive={true}>Oshi no Ko</SearchList>
-	<Arrow/>
+	<ButtonViewMode state={true}></ButtonViewMode>
+	<CategoriesTitle>En cours</CategoriesTitle>
+	<CoverBlock showProgress={true}></CoverBlock>
+	<CategoriesTitle>Pas commencés</CategoriesTitle>
 </section>
