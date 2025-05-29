@@ -19,11 +19,9 @@
 </script>
 
 <section>
-	<Navbar />
 	<Topbar />
 	<EpisodeInformation episode={1} time={25}>
 		{#snippet title()}Oshi No Ko{/snippet}
 		{#snippet info()}blabla{/snippet}
 	</EpisodeInformation>
-	<SearchList isActive={true}>Oshi no Ko</SearchList>
 </section>

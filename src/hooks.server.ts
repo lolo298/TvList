@@ -44,12 +44,10 @@ const supabase: Handle = async ({ event, resolve }) => {
       data: { user },
       error,
     } = await event.locals.supabase.auth.getUser()
-    if (error) {
+    if (error || !user) {
       // JWT validation has failed
       return { session: null, user: null }
     }
-
-    const prisma = new PrismaClient()
 
 
 

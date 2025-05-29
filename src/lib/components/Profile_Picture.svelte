@@ -1,18 +1,18 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
+	import type { User } from '$lib/types/api';
 
 	interface Props {
-		name: Snippet;
+        user: User;
 	}
 
-	const { name }: Props = $props();
+	const { user }: Props = $props();
 </script>
 
 <div class="list">
     <div class="image">
-        <img src="https://image.over-blog.com/_jCmqCsgfTlSWSTtWQBHwN0brpg=/filters:no_upscale()/image%2F3292067%2F20230516%2Fob_8bb98a_affiche2.png" alt="">
+        <img src={user.profilePicture} alt="">
     </div>
-    <h1>{@render name()}</h1>
+    <h1>{user.username}</h1>
 </div>
 
 <style>
@@ -22,8 +22,9 @@
         align-items: flex-end;
     }
     .image{
-        width: 10em;
-        height: 10em;
+        aspect-ratio: 1 / 1;
+        width: 8em;
+        padding: 1rem;
     }
     img{
         width: 100%;
@@ -35,5 +36,6 @@
         font-size: xx-large;
         color: #FFFFFF;
         margin: 0.5em;
+        margin-bottom: 2rem;
     }
 </style>

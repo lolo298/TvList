@@ -1,6 +1,6 @@
 import { TMDB_API_KEY } from '$env/static/private';
 import { PrismaClient, type Show } from '@prisma/client';
-import type { MovieDetail, SerieDetail, SeasonDetail } from '$lib/types/api';
+import type { MovieDetail, SerieDetail, SeasonDetail } from '$lib/types/tmdb';
 
 const prisma = new PrismaClient();
 

@@ -1,6 +1,7 @@
 import { createBrowserClient, createServerClient, isBrowser } from '@supabase/ssr'
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public'
 import type { LayoutLoad } from './$types'
+import type { User } from '$lib/types/api'
 
 export const load: LayoutLoad = async ({ data, depends, fetch }) => {
   /**
@@ -35,12 +36,11 @@ export const load: LayoutLoad = async ({ data, depends, fetch }) => {
     data: { session },
   } = await supabase.auth.getSession()
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-
-
   
+  const res = await fetch("/api/user");
+  const user: User = res.ok ? await res.json() : null;
+
+
 
   return { session, supabase, user }
 }

@@ -4,6 +4,7 @@
 
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import Navbar from '$lib/components/Navbar.svelte';
 
 	let { data, children } = $props();
 	let { session, supabase } = $derived(data);
@@ -19,4 +20,5 @@
 	});
 </script>
 
+<Navbar />
 {@render children()}

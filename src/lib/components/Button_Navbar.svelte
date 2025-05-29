@@ -7,33 +7,35 @@
 		children: Snippet;
 		isActive: boolean;
 		icon: IconDefinition;
+		href?: string;
 	}
 
-	const { children, isActive, icon }: Props = $props();
+	const { children, isActive, icon, href }: Props = $props();
 </script>
 
-<div class:blue={isActive}>
+<a class:blue={isActive} href={href || '#'}>
 	<Fa {icon} size="2.5x" />
-	<a href="#">{@render children()}</a>
-</div>
+	<span>
+		{@render children()}
+	</span>
+</a>
 
 <style>
 	.blue {
 		background-color: #414141;
 		color: #74a9b5;
 	}
-	.blue > a {
-		color: #74a9b5;
-	}
 	a {
+		padding-top: 0.5em;
+		display: flex;
+		flex-direction: column;
+
 		text-decoration: none;
 		color: #9a9a9a;
 		font-size: large;
 		margin: 0.3em;
 	}
-	div {
-		padding-top: 0.5em;
-		display: flex;
-		flex-direction: column;
+	span{
+		margin-top: 0.5em;
 	}
 </style>
