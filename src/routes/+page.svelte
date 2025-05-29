@@ -1,5 +1,6 @@
 <script>
-	import Arrow from '$lib/components/Arrow.svelte';
+	import { getSerie } from '$lib/api';
+import Arrow from '$lib/components/Arrow.svelte';
 	import ButtonViewMode from '$lib/components/Button_View_Mode.svelte';
 	import Button from '$lib/components/Button_View_Mode.svelte';
 	import CategoriesTitle from '$lib/components/Categories_Title.svelte';
@@ -28,5 +29,67 @@
 
 <section>
 	<Topbar />
+	<div class="top">
+		<div class="catTitle">
+		<CategoriesTitle>En cours</CategoriesTitle>
+		</div>
+		<div class="mode">
+			<ButtonViewMode state={true}></ButtonViewMode>
+		</div>
+	</div>
+	<div class="list">
+		<div class="cover">
+			{#await getSerie(456)}
+			{:then info} 
+				<CoverBlock showProgress={true} src={info.cover?info.cover:""} alt={info.id.toString()}></CoverBlock>
+			{/await}
+		</div>
+		<div class="cover">
+			{#await getSerie(456)}
+			{:then info} 
+				<CoverBlock showProgress={true} src={info.cover?info.cover:""} alt={info.id.toString()}></CoverBlock>
+			{/await}
+		</div>
+		<div class="cover">
+			{#await getSerie(456)}
+			{:then info} 
+				<CoverBlock showProgress={true} src={info.cover?info.cover:""} alt={info.id.toString()}></CoverBlock>
+			{/await}
+		</div>
+		<div class="cover">
+			{#await getSerie(456)}
+			{:then info} 
+				<CoverBlock showProgress={true} src={info.cover?info.cover:""} alt={info.id.toString()}></CoverBlock>
+			{/await}
+		</div>
+	</div>
+	<div class="catTitle">
+		<CategoriesTitle>Pas commencés</CategoriesTitle>
+	</div>
 	<p>{prefs.defaultPage}</p>
 </section>
+
+<style>
+	.catTitle{
+		width: 15em;
+		margin: 1em;
+	}
+	.mode{
+		margin: 1em;
+	}
+	.top{
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+	}
+	.list{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		flex-wrap: wrap;
+	}
+	.cover{
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+</style>

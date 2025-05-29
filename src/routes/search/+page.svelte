@@ -7,3 +7,4 @@
 
 <h1>Search</h1>
 <SearchList isActive={true}>Oshi no Ko</SearchList>
+<a href="/auth">login</a>

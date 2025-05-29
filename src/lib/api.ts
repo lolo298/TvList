@@ -1,3 +1,4 @@
+import type { Show } from "@prisma/client";
 import { isBrowser } from '@supabase/ssr';
 import type {
 	User,
@@ -6,6 +7,11 @@ import type {
 	UserWithStatsAndPreferences,
 	GetUserResponse
 } from './types/api';
+
+export async function getSerie(id:number) : Promise<Show> {
+    let res = await fetch(`/api/serie/${id}`);
+    return await res.json();
+}
 
 export async function getUser<T extends boolean, U extends boolean>({
 	includeStats,

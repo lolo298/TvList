@@ -1,15 +1,19 @@
 <script lang="ts">
+	import type { Snippet } from "svelte";
+
 	interface Props {
 		showProgress: boolean;
+		src: string;
+		alt: string;
 	}
 
-	const { showProgress }: Props = $props();
+	const { showProgress, src, alt }: Props = $props();
 </script>
 
 <div class="cover">
 	<img
-		src="https://image.over-blog.com/_jCmqCsgfTlSWSTtWQBHwN0brpg=/filters:no_upscale()/image%2F3292067%2F20230516%2Fob_8bb98a_affiche2.png"
-		alt=""
+		src={src}
+		alt={alt}
 	/>
 	{#if showProgress == true}
 		<div class="progress-bar">
