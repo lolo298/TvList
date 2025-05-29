@@ -1,4 +1,8 @@
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
-import { createClient } from '@supabase/supabase-js';
+import { isBrowser, createBrowserClient, createServerClient } from '@supabase/ssr';
 
-export const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
+export const supabase = createBrowserClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
+        global: {
+          fetch,
+        },
+      })

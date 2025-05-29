@@ -41,6 +41,9 @@ export const GET = async (event) => {
                             seriesWatched: 0,
                             seriesWatchTime: 0,
                         }
+                    },
+                    preferences: {
+                        create: {}
                     }
 				}
 			});

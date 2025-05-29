@@ -9,15 +9,17 @@ datasource db {
 }
 
 model User {
-  id              String    @id @default(uuid())
-  username        String    @unique
+  id              String      @id @default(uuid())
+  username        String      @unique
   profilePicture  String
-  statsId         String    @unique
+  statsId         String      @unique
+  preferencesId   String      @unique
   list            List[]
-  stats           Stats     @relation(fields: [statsId], references: [id])
-  watchedEpisodes Episode[] @relation("EpisodeToUser")
-  followedShows   Show[]    @relation("FollowedShows")
-  lovedShows      Show[]    @relation("LovedShows")
+  stats           Stats       @relation(fields: [statsId], references: [id])
+  preferences     Preferences @relation(fields: [preferencesId], references: [id])
+  watchedEpisodes Episode[]   @relation("EpisodeToUser")
+  followedShows   Show[]      @relation("FollowedShows")
+  lovedShows      Show[]      @relation("LovedShows")
 }
 
 model Stats {
@@ -29,6 +31,20 @@ model Stats {
   moviesWatchTime Int
   moviesWatched   Int
   user            User?
+}
+
+enum DefaultPage {
+  SERIES
+  MOVIES
+  SEARCH
+}
+
+model Preferences {
+  id          String      @id @default(uuid())
+  user        User?
+  gridView    Boolean     @default(true)
+  toWatch     Boolean     @default(true)
+  defaultPage DefaultPage @default(SERIES)
 }
 
 model List {
