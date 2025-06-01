@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 	import Fa from 'svelte-fa';
 	import { faCircleCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
+	import { getImagePath } from '$lib/tmdb';
 
 	interface Props {
 		children: Snippet;
@@ -14,7 +15,7 @@
 <div class="list">
 	<div class="image">
 		<img
-			src="https://image.over-blog.com/_jCmqCsgfTlSWSTtWQBHwN0brpg=/filters:no_upscale()/image%2F3292067%2F20230516%2Fob_8bb98a_affiche2.png"
+			src={getImagePath('/okbW9NdKRNKgIUTVA8YZAUGwIUx.jpg','POSTER', 'w500')}
 			alt=""
 		/>
 	</div>

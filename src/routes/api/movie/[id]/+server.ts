@@ -1,4 +1,4 @@
-import { getMovie } from '$lib/tmdb';
+import { getMovie } from '$lib/server/tmdb';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 

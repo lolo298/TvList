@@ -62,15 +62,35 @@ model Show {
   adult      Boolean
   popularity Float
   name       String
-  cover      String?
   listId     String?
   updatedAt  DateTime  @updatedAt
   seasons    Season[]
   list       List?     @relation(fields: [listId], references: [id])
   user       User[]    @relation("FollowedShows")
   lovedBy    User[]    @relation("LovedShows")
+  images     TMDBImage[]
 
   @@index([tmdbId, type], name: "tmdb_type_index")
+}
+
+model TMDBImage {
+  id     Int        @id @default(autoincrement())
+  url    String
+  type   Image_Type
+  showId Int
+  show   Show?      @relation(fields: [showId], references: [id])
+  seasonId Int?
+  season Season?   @relation(fields: [seasonId], references: [id])
+  episodeId Int?
+  episode Episode? @relation(fields: [episodeId], references: [id])
+}
+
+enum Image_Type {
+  POSTER
+  BACKDROP
+  STILL
+  PROFILE
+  LOGO
 }
 
 model Season {
@@ -80,6 +100,7 @@ model Season {
   showId    Int
   updatedAt DateTime  @updatedAt
   episodes  Episode[]
+  images    TMDBImage[]
   show      Show      @relation(fields: [showId], references: [id])
 }
 
@@ -94,6 +115,7 @@ model Episode {
   updatedAt DateTime @updatedAt
   season    Season   @relation(fields: [seasonId], references: [id])
   User      User[]   @relation("EpisodeToUser")
+  images    TMDBImage[]
 }
 
 enum Show_Type {
