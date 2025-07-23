@@ -3,24 +3,29 @@
 	import Fa from 'svelte-fa';
 	import { faCircleCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
 	import { getImagePath } from '$lib/tmdb';
+	import { Prisma, Show_Type, type Show } from '@prisma/client';
 
 	interface Props {
-		children: Snippet;
 		isActive: boolean;
+		show: Prisma.ShowGetPayload<{
+			include: {
+				images: true;
+			};
+		}>;
 	}
 
-	const { children, isActive }: Props = $props();
+	const { show, isActive }: Props = $props();
 </script>
 
 <div class="list">
 	<div class="image">
 		<img
-			src={getImagePath('/okbW9NdKRNKgIUTVA8YZAUGwIUx.jpg','POSTER', 'w500')}
+			src={getImagePath(show.images.find(image => image.type === 'POSTER')?.url ?? "", 'POSTER', 'w500')}
 			alt=""
 		/>
 	</div>
 	<div class="info">
-		<p class="title">{@render children()}</p>
+		<p class="title">{show.name}</p>
 		{#if isActive == false}
 			<div class="icon">
 				<Fa icon={faPlus} size="1.7x" />
@@ -52,11 +57,11 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		border-radius: 10px;
 	}
 	.list {
+
 		height: auto;
-		border: solid 2px #74a9b5;
+		border: solid 1px #74a9b5;
 		border-radius: 10px;
 		position: relative;
 		overflow: hidden;

@@ -34,7 +34,7 @@
 		color: #9a9a9a;
 	}
 	nav {
-		position: absolute;
+		position: sticky;
 		bottom: 0;
 		left: 0;
 		right: 0;

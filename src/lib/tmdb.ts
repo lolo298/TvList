@@ -20,6 +20,9 @@ type ImageSizeParam<T extends Image_Type> = T extends 'POSTER'
 	: never;
 
 export function getImagePath<T extends Image_Type>(path: string, _format?: T, size?: ImageSizeParam<T>): string {
+	if (!path) {
+		return '';
+	}
 	const baseUrl = 'https://image.tmdb.org/t/p/';
 	const tmp = `${baseUrl}${size}${path}`;
     console.log(tmp);

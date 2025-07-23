@@ -20,5 +20,5 @@
 	});
 </script>
 
-<Navbar />
 {@render children()}
+<Navbar />
