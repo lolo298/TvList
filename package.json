@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^9.2.1",
+    "database": "^0.0.2",
     "turbo": "^2.5.6"
   }
 }

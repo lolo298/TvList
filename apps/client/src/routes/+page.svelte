@@ -22,9 +22,14 @@ import Arrow from '$lib/components/Arrow.svelte';
 	import Star from '$lib/components/Star.svelte';
 	import Tags from '$lib/components/Tags.svelte';
 	import Topbar from '$lib/components/Topbar.svelte';
+	import { getShowById } from '$lib/shows.js';
+	import { redirect } from '@sveltejs/kit';
 
 	const { data } = $props();
-	const { prefs } = $derived(data);
+
+
+
+	// const { prefs } = $derived(data);
 </script>
 
 <section>
@@ -39,25 +44,25 @@ import Arrow from '$lib/components/Arrow.svelte';
 	</div>
 	<div class="list">
 		<div class="cover">
-			{#await getSerie(456)}
+			{#await getShowById(456)}
 			{:then info} 
 				<CoverBlock showProgress={true} src={info.cover?info.cover:""} alt={info.id.toString()}></CoverBlock>
 			{/await}
 		</div>
 		<div class="cover">
-			{#await getSerie(456)}
+			{#await getShowById(456)}
 			{:then info} 
 				<CoverBlock showProgress={true} src={info.cover?info.cover:""} alt={info.id.toString()}></CoverBlock>
 			{/await}
 		</div>
 		<div class="cover">
-			{#await getSerie(456)}
+			{#await getShowById(456)}
 			{:then info} 
 				<CoverBlock showProgress={true} src={info.cover?info.cover:""} alt={info.id.toString()}></CoverBlock>
 			{/await}
 		</div>
 		<div class="cover">
-			{#await getSerie(456)}
+			{#await getShowById(456)}
 			{:then info} 
 				<CoverBlock showProgress={true} src={info.cover?info.cover:""} alt={info.id.toString()}></CoverBlock>
 			{/await}
@@ -66,7 +71,7 @@ import Arrow from '$lib/components/Arrow.svelte';
 	<div class="catTitle">
 		<CategoriesTitle>Pas commencés</CategoriesTitle>
 	</div>
-	<p>{prefs.defaultPage}</p>
+	<!-- <p>{prefs.defaultPage}</p> -->
 </section>
 
 <style>

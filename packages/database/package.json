@@ -5,10 +5,12 @@
   "scripts": {
     "prisma": "prisma",
     "db:generate": "prisma generate --no-engine",
+    "db:watch": "prisma generate --watch",
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:studio": "prisma studio",
-    "dev": "tsc --project ./tsconfig.json --watch"
+    "watch": "tsc --project ./tsconfig.json --watch",
+    "dev": "concurrently \"pnpm db:watch\" \"pnpm watch\""
   },
   "devDependencies": {
     "@types/node": "^22.10.7",

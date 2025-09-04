@@ -5,3 +5,9 @@ export const getTrending = async (page: number = 1) => {
 	const data = await response.json();
 	return data;
 };
+
+export const getShowById = async (id: number) => {
+	const response = await fetch(PUBLIC_BASE_URL + '/shows/' + id);
+	const data = await response.json();
+	return data;
+}

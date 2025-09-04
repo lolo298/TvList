@@ -24,6 +24,13 @@ export class ShowsService {
     headers.set('Authorization', `Bearer ${this.TMDB_API_KEY}`);
     return globalThis.fetch(input, { ...init, headers });
   }
+  async getShowById({ id, type }: { id: number; type: 'movie'}): Promise<MovieWithImages> 
+  async getShowById({ id, type }: { id: number; type: 'tv' }): Promise<SerieWithSeason> 
+  async getShowById({ id, type }: { id: number; type: 'movie' | 'tv' }): Promise<MovieWithImages | SerieWithSeason> {
+    return type === 'movie'
+      ? (this.getMovie(id))
+      : (this.getSerie(id));
+  }
 
   async getMovie(id: number): Promise<MovieWithImages> {
     const bddResult = await prisma.show.findFirst({
@@ -45,15 +52,7 @@ export class ShowsService {
     );
 
     // Movie not found in the database, fetch from TMDB
-    const response = await this.fetch(
-      `https://api.themoviedb.org/3/movie/${id}`,
-    );
-    if (!response.ok) {
-      throw new Error(
-        `Error fetching movie with ID ${id}: ${response.statusText}`,
-      );
-    }
-    const data: MovieDetail = await response.json();
+    const data = await this.getFromTmdb({ id, type: 'movie' });
     // Add the movie to the database
     const res = await prisma.show.create({
       data: {
@@ -91,12 +90,7 @@ export class ShowsService {
     }
 
     // Movie not found in the database, fetch from TMDB
-    const response = await this.fetch(`https://api.themoviedb.org/3/tv/${id}`);
-    if (!response.ok) {
-      throw new Error(
-        `Error fetching serie with ID ${id}: ${response.statusText}`,
-      );
-    }
+    const data = await this.getFromTmdb({ id, type: 'tv' });
 
     const images: {
       url: string;
@@ -104,8 +98,6 @@ export class ShowsService {
       tmdbId?: number;
       targetType?: 'SHOW' | 'SEASON' | 'EPISODE';
     }[] = [];
-
-    const data: SerieDetail = await response.json();
 
     const seasonsCreate = await Promise.all(
       data.seasons.map(async (season) => {
@@ -275,6 +267,66 @@ export class ShowsService {
       }
     }
     return Promise.all(shows);
+  }
+
+  async getFromTmdb({
+    id,
+    type,
+  }: {
+    id: number;
+    type: 'movie';
+  }): Promise<MovieDetail>;
+  async getFromTmdb({
+    id,
+    type,
+  }: {
+    id: number;
+    type: 'tv';
+  }): Promise<SerieDetail>;
+  async getFromTmdb({
+    id,
+    type,
+  }: {
+    id: number;
+    type: 'movie' | 'tv';
+  }): Promise<MovieDetail | SerieDetail> {
+    if (type === 'movie') {
+      const response = await this.fetch(
+        `https://api.themoviedb.org/3/movie/${id}`,
+      );
+      if (!response.ok) {
+        if (response.status === 404) {
+          throw new ShowNotFoundError(`Movie with ID ${id} not found`);
+        }
+        throw new Error(
+          `Error fetching movie with ID ${id}: ${response.statusText}`,
+        );
+      }
+      const data: MovieDetail = await response.json();
+      return data;
+    } else {
+      const response = await this.fetch(
+        `https://api.themoviedb.org/3/tv/${id}`,
+      );
+      if (!response.ok) {
+        if (response.status === 404) {
+          throw new ShowNotFoundError(`Serie with ID ${id} not found`);
+        }
+        throw new Error(
+          `Error fetching serie with ID ${id}: ${response.statusText}`,
+        );
+      }
+
+      const data: SerieDetail = await response.json();
+      return data;
+    }
+  }
+}
+
+export class ShowNotFoundError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'ShowNotFoundError';
   }
 }
 
