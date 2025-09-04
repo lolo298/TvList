@@ -1,0 +1,9 @@
+{
+  "extends": "../../packages/ts-config/tsconfig.json",
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+  }
+}
