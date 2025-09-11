@@ -9,29 +9,94 @@ datasource db {
   directUrl = env("DATABASE_URL")
 }
 
-model User {
-  id              String      @id @default(uuid())
-  username        String      @unique
-  profilePicture  String
+model UserData {
+  id     String @id @default(uuid())
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+
   statsId         String      @unique
   preferencesId   String      @unique
   list            List[]
   stats           Stats       @relation(fields: [statsId], references: [id])
   preferences     Preferences @relation(fields: [preferencesId], references: [id])
-  watchedEpisodes Episode[]   @relation("EpisodeToUser")
+  watchedEpisodes Episode[]   @relation("EpisodeToUserData")
   followedShows   Show[]      @relation("FollowedShows")
   lovedShows      Show[]      @relation("LovedShows")
 }
 
+model User {
+  id            String    @id
+  name          String
+  email         String
+  emailVerified Boolean   @default(false)
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now()) @updatedAt
+  sessions      Session[]
+  accounts      Account[]
+
+  // -------
+  userData UserData?
+  // -------
+
+  @@unique([email])
+  @@map("user")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+
+  @@map("verification")
+}
+
 model Stats {
-  id              String @id @default(uuid())
-  loved           Int
-  followed        Int
-  seriesWatchTime Int
-  seriesWatched   Int
-  moviesWatchTime Int
-  moviesWatched   Int
-  user            User?
+  id              String    @id @default(uuid())
+  loved           Int       @default(0)
+  followed        Int       @default(0)
+  seriesWatchTime Int       @default(0)
+  seriesWatched   Int       @default(0)
+  moviesWatchTime Int       @default(0)
+  moviesWatched   Int       @default(0)
+  userData        UserData?
 }
 
 enum DefaultPage {
@@ -42,18 +107,18 @@ enum DefaultPage {
 
 model Preferences {
   id          String      @id @default(uuid())
-  user        User?
+  userData    UserData?
   gridView    Boolean     @default(true)
   toWatch     Boolean     @default(true)
   defaultPage DefaultPage @default(SERIES)
 }
 
 model List {
-  id     String @id @default(uuid())
-  name   String
-  userId String
-  user   User   @relation(fields: [userId], references: [id])
-  Shows  Show[]
+  id         String   @id @default(uuid())
+  name       String
+  userDataId String
+  userData   UserData @relation(fields: [userDataId], references: [id])
+  Shows      Show[]
 }
 
 model Show {
@@ -67,8 +132,8 @@ model Show {
   updatedAt  DateTime    @updatedAt
   seasons    Season[]
   list       List?       @relation(fields: [listId], references: [id])
-  user       User[]      @relation("FollowedShows")
-  lovedBy    User[]      @relation("LovedShows")
+  userData   UserData[]  @relation("FollowedShows")
+  lovedBy    UserData[]  @relation("LovedShows")
   images     TMDBImage[]
 
   @@index([tmdbId, type], name: "tmdb_type_index")
@@ -115,7 +180,7 @@ model Episode {
   duration  Int?
   updatedAt DateTime    @updatedAt
   season    Season      @relation(fields: [seasonId], references: [id])
-  User      User[]      @relation("EpisodeToUser")
+  UserData  UserData[]  @relation("EpisodeToUserData")
   images    TMDBImage[]
 }
 

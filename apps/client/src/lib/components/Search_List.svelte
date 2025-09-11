@@ -3,7 +3,7 @@
 	import Fa from 'svelte-fa';
 	import { faCircleCheck, faPlus } from '@fortawesome/free-solid-svg-icons';
 	import { getImagePath } from '$lib/tmdb';
-	import { Prisma, Show_Type, type Show } from '@prisma/client';
+	import { type Prisma } from 'database';
 
 	interface Props {
 		isActive: boolean;
@@ -15,12 +15,17 @@
 	}
 
 	const { show, isActive }: Props = $props();
+	console.log(JSON.stringify(show.images));
 </script>
 
-<div class="list">
+<div class="list" data-id={show.tmdbId}>
 	<div class="image">
 		<img
-			src={getImagePath(show.images.find(image => image.type === 'POSTER')?.url ?? "", 'POSTER', 'w500')}
+			src={getImagePath(
+				show.images.find((image) => image.type === 'POSTER')?.url ?? '',
+				'POSTER',
+				'w500'
+			)}
 			alt=""
 		/>
 	</div>
@@ -59,7 +64,6 @@
 		object-fit: cover;
 	}
 	.list {
-
 		height: auto;
 		border: solid 1px #74a9b5;
 		border-radius: 10px;

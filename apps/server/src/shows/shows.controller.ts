@@ -1,6 +1,13 @@
-import { Controller, Get, HttpException, HttpStatus, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpException,
+  HttpStatus,
+  Param,
+} from '@nestjs/common';
 import { ShowNotFoundError, ShowsService } from './shows.service';
 import { ConfigService } from '@nestjs/config';
+import { prisma } from 'database';
 
 @Controller('shows')
 export class ShowsController {
@@ -27,7 +34,19 @@ export class ShowsController {
       if (error instanceof ShowNotFoundError) {
         throw new HttpException(error.message, HttpStatus.NOT_FOUND);
       }
-      throw new HttpException('Internal server error', HttpStatus.INTERNAL_SERVER_ERROR);
+      throw new HttpException(
+        'Internal server error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
+  }
+  @Get('tmp')
+  async tmp() {
+    await prisma.tMDBImage.deleteMany({});
+    await prisma.episode.deleteMany({});
+    await prisma.season.deleteMany({});
+    const tmp = await prisma.show.deleteMany({});
+
+    return tmp;
   }
 }

@@ -1,0 +1,7 @@
+-- AlterTable
+ALTER TABLE "public"."Stats" ALTER COLUMN "loved" SET DEFAULT 0,
+ALTER COLUMN "followed" SET DEFAULT 0,
+ALTER COLUMN "seriesWatchTime" SET DEFAULT 0,
+ALTER COLUMN "seriesWatched" SET DEFAULT 0,
+ALTER COLUMN "moviesWatchTime" SET DEFAULT 0,
+ALTER COLUMN "moviesWatched" SET DEFAULT 0;

@@ -1,24 +1,40 @@
 <script lang="ts">
-	let { data, children } = $props();
-	let { supabase, params } = $derived(data);
+	import { goto } from '$app/navigation';
+	import { authClient } from '$lib/auth';
+	let name = $state('');
+	let email = $state('');
+	let password = $state('');
+	let error = $state('');
 
-	async function handleLogin() {
-		await supabase.auth.signInWithOAuth({
-			provider: 'google',
-			options: {
-				redirectTo: `${window.location.origin}/auth/callback`
-			}
+	async function handleLogin(e: any) {
+		e.preventDefault();
+		const result = await authClient.signUp.email({
+			name,
+			email,
+			password,
+			
 		});
+		if (result?.error) {
+			console.error('Login error:', result.error);
+			error = result.error.message || 'An unknown error occurred';
+		} else {
+			console.log('Login successful, redirecting...');
+			goto('/profile');
+		}
 	}
 </script>
 
 <div>
 	<h1>Login</h1>
-	<form method="POST" action="?/login">
-		<button type="submit" name="submit" value="google">Google</button>
+	<form onsubmit={handleLogin}>
+		<!-- <button type="submit" name="submit" value="google">Google</button> -->
+		<input type="text" name="name" placeholder="Name" required bind:value={name} />
+		<input type="email" name="email" placeholder="email" required bind:value={email} />
+		<input type="password" name="password" placeholder="Password" required bind:value={password} />
+		<button type="submit" name="submit" value="credentials">Login</button>
 	</form>
-	{#if params.error}
-		<p style="color: red;">Error: {params.error}</p>
+	{#if error}
+		<p style="color: red;">Error: {error}</p>
 	{/if}
 </div>
 

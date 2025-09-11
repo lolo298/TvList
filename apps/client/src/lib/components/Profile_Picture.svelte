@@ -2,17 +2,18 @@
 	import type { User } from '$lib/types/api';
 
 	interface Props {
-		user: User;
+		image?: User['image'];
+		name: User['name'];
 	}
 
-	const { user }: Props = $props();
+	const { image, name }: Props = $props();
 </script>
 
 <div class="list">
 	<div class="image">
-		<img src={user.profilePicture} alt="" />
+		<img src={image} alt="" />
 	</div>
-	<h1>{user.username}</h1>
+	<h1>{name}</h1>
 </div>
 
 <style>

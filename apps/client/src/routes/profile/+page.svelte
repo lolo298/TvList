@@ -8,6 +8,6 @@
 </script>
 
 {#if user}
-	<ProfilePicture {user} />
-	<DataProfile stats={user.stats} />
+	<ProfilePicture image={user.image} name={user.name} />
+	<DataProfile stats={user.userData.stats} />
 {/if}

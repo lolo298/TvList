@@ -7,13 +7,29 @@
 export const prerender = true;
 export const ssr = false;
 
+import { redirect } from '@sveltejs/kit';
 import type { LayoutLoad } from './$types';
+import { authClient } from '$lib/auth';
+const unprotectedRoutes = ['/auth', '/auth/login', '/search'];
 
 export const load: LayoutLoad = async (event) => {
-	// const session = await event.locals.auth();
+	const session = await authClient.getSession();
+	const isLoggedIn = !!session.data;
+
+	const isUnprotectedRoute = unprotectedRoutes.some((route) =>
+		event.url.pathname.startsWith(route)
+	);
+
+	if (!isUnprotectedRoute && !isLoggedIn) {
+		console.log('User not logged in, redirecting to /auth');
+		throw redirect(302, '/auth');
+	}
+
+	console.log('Layout load session:', session);
 
 	return {
-		// session
+		session: session.data?.session || null,
+		user: session.data?.user || null
 	};
 };
 

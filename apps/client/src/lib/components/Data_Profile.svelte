@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Stats } from '@prisma/client';
+	import type { Stats } from 'database';
 
 	interface Props {
 		stats: Stats;

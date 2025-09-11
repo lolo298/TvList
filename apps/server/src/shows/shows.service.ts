@@ -63,6 +63,32 @@ export class ShowsService {
         popularity: data.popularity,
       },
     });
+
+    const images: { url: string; type: Image_Type; tmdbId?: number }[] = [];
+
+    if (data.backdrop_path) {
+      images.push({
+        url: data.backdrop_path,
+        type: Image_Type.BACKDROP,
+        tmdbId: data.id,
+      });
+    }
+    if (data.poster_path) {
+      images.push({
+        url: data.poster_path,
+        type: Image_Type.POSTER,
+        tmdbId: data.id,
+      });
+    }
+
+    await prisma.tMDBImage.createMany({
+      data: images.map((image) => ({
+        type: image.type,
+        url: image.url,
+        showId: res.id,
+      })),
+    });
+
     return (await prisma.show.findUnique({
       where: {
         id: res.id,

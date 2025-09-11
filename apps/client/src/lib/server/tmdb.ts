@@ -1,6 +1,6 @@
 import { TMDB_API_KEY } from '$env/static/private';
-import { PrismaClient, type Show, Image_Type, Prisma } from '@prisma/client';
-import type { MovieDetail, SerieDetail, SeasonDetail } from '$lib/types/tmdb';
+import { PrismaClient, Image_Type, Prisma } from 'database';
+import type { MovieDetail, SerieDetail, SeasonDetail } from 'common/types';
 
 const prisma = new PrismaClient();
 
@@ -54,17 +54,17 @@ export async function getMovie(id: number): Promise<MovieWithImages> {
 			adult: data.adult,
 			name: data.title,
 			type: 'MOVIE',
-			popularity: data.popularity,
+			popularity: data.popularity
 		}
 	});
-	return await prisma.show.findUnique({
+	return (await prisma.show.findUnique({
 		where: {
 			id: res.id
 		},
 		include: {
 			images: true
 		}
-	}) as MovieWithImages;
+	})) as MovieWithImages;
 }
 
 type SerieWithSeason = Prisma.ShowGetPayload<{
@@ -238,7 +238,7 @@ export async function getSerie(id: number): Promise<SerieWithSeason> {
 		}
 	}
 
-	return await prisma.show.findUnique({
+	return (await prisma.show.findUnique({
 		where: {
 			id: res.id
 		},
@@ -246,10 +246,12 @@ export async function getSerie(id: number): Promise<SerieWithSeason> {
 			seasons: true,
 			images: true
 		}
-	}) as SerieWithSeason;
+	})) as SerieWithSeason;
 }
 
-export async function getTrending(offset: number = 1): Promise<(MovieWithImages | SerieWithSeason)[]> {
+export async function getTrending(
+	offset: number = 1
+): Promise<(MovieWithImages | SerieWithSeason)[]> {
 	if (offset > 500) {
 		throw new Error('Offset must be between 1 and 500');
 	}
