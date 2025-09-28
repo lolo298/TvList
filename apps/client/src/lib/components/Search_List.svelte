@@ -18,30 +18,33 @@
 	console.log(JSON.stringify(show.images));
 </script>
 
-<div class="list" data-id={show.tmdbId}>
-	<div class="image">
-		<img
-			src={getImagePath(
-				show.images.find((image) => image.type === 'POSTER')?.url ?? '',
-				'POSTER',
-				'w500'
-			)}
-			alt=""
-		/>
+<a href="{`${show.type}`}/{`${show.tmdbId}`}">
+	<div class="list" data-id={show.tmdbId}>
+		<div class="image">
+			<img
+				src={getImagePath(
+					show.images.find((image) => image.type === 'POSTER')?.url ?? '',
+					'POSTER',
+					'w500'
+				)}
+				alt=""
+			/>
+		</div>
+		<div class="info">
+			<p class="title">{show.name}</p>
+			{#if isActive == false}
+				<div class="icon">
+					<Fa icon={faPlus} size="1.7x" />
+				</div>
+			{:else}
+				<div class="icon_active">
+					<Fa icon={faCircleCheck} size="1.8x" />
+				</div>
+			{/if}
+		</div>
+		
 	</div>
-	<div class="info">
-		<p class="title">{show.name}</p>
-		{#if isActive == false}
-			<div class="icon">
-				<Fa icon={faPlus} size="1.7x" />
-			</div>
-		{:else}
-			<div class="icon_active">
-				<Fa icon={faCircleCheck} size="1.8x" />
-			</div>
-		{/if}
-	</div>
-</div>
+</a>
 
 <style>
 	.image {
@@ -100,5 +103,8 @@
 		right: 0;
 		margin-right: 1em;
 		color: #74a9b5;
+	}
+	a{
+		text-decoration: none;
 	}
 </style>

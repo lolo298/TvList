@@ -1,6 +1,6 @@
 <script>
 	import { getSerie } from '$lib/api';
-import Arrow from '$lib/components/Arrow.svelte';
+	import Arrow from '$lib/components/Arrow.svelte';
 	import ButtonViewMode from '$lib/components/Button_View_Mode.svelte';
 	import Button from '$lib/components/Button_View_Mode.svelte';
 	import CategoriesTitle from '$lib/components/Categories_Title.svelte';

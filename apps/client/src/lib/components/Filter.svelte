@@ -19,6 +19,7 @@
 		padding: 0.5em;
 		text-align: center;
 		text-transform: uppercase;
+		margin: 0.5em;
 	}
 	.blue {
 		color: #262626;

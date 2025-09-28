@@ -6,14 +6,13 @@
 <nav>
 	<ul>
 		<li>
-			<ButtonNavbar icon={faTv} isActive={false} href="/">Series</ButtonNavbar>
+			<ButtonNavbar icon={faTv} isActive={false} href="/series">Series</ButtonNavbar>
 		</li>
 		<li>
 			<ButtonNavbar icon={faFilm} isActive={false} href="/films">Films</ButtonNavbar>
 		</li>
 		<li>
-			<ButtonNavbar icon={faMagnifyingGlass} isActive={false} href="/search">Recherche</ButtonNavbar
-			>
+			<ButtonNavbar icon={faMagnifyingGlass} isActive={false} href="/search">Recherche</ButtonNavbar>
 		</li>
 		<li>
 			<ButtonNavbar icon={faUser} isActive={false} href="/profile">Profil</ButtonNavbar>
