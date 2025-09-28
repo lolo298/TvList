@@ -1,6 +1,6 @@
 import { supabase } from '$lib/supabase';
 import type { GetUserResponse } from '$lib/types/api';
-import { PrismaClient } from 'database';
+import { PrismaClient } from '$database';
 import type { User } from '@supabase/supabase-js';
 
 export async function getUser<T extends boolean, U extends boolean>(

@@ -1,4 +1,7 @@
-import type { Show } from 'database';
+/**
+ * @deprecated
+ */
+import type { Show } from '$database';
 import { isBrowser } from '@supabase/ssr';
 import type {
 	User,

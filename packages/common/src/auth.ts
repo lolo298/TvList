@@ -2,6 +2,7 @@ import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
 import { customSession } from 'better-auth/plugins';
 import { prisma } from 'database';
+import 'dotenv/config'
 
 export const auth = betterAuth({
   database: prismaAdapter(prisma, { provider: 'postgresql' }),
@@ -11,18 +12,29 @@ export const auth = betterAuth({
   trustedOrigins: ['http://localhost:5173'],
 
   logger: {
+    level: 'info',
     disabled: false,
-    level: 'debug', // Change to 'debug' for more detailed logs
-    logger: (level, message) => {
-      console[level](message);
-    },
+    log: (level, message, meta) => {
+      console.log(`[${level}] ${message}`, meta || '');
+    }
+  },
+
+  socialProviders: {
+    google: {
+      clientId: process.env.GOOGLE_CLIENT_ID || '',
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || ''
+    }
   },
 
   plugins: [
     customSession(async ({ user, session }) => {
       const userData = await prisma.userData.findUnique({
         where: { userId: user.id },
-        include: { preferences: true, stats: true },
+        include: { preferences: true, stats: true, followedShows: {
+          include: {
+            images: true
+          }
+        } },
       });
 
       if (userData === null) {

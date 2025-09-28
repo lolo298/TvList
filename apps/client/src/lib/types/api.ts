@@ -1,4 +1,4 @@
-import type { User as u, Stats, Preferences } from 'database';
+import type { User as u, Stats, Preferences } from '$database';
 import type { User as su } from '@supabase/supabase-js';
 
 export type User = u & {

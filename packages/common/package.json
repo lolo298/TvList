@@ -3,18 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "exports": {
-    "./types": "./types/index.ts",
-    "./auth.ts": "./auth.ts"
+    "./types": "./src/types/index.ts",
+    "./auth": "./src/auth.ts"
   },
   "dependencies": {
     "better-auth": "^1.3.9",
-    "database": "workspace:*"
-
+    "database": "workspace:*",
+    "dotenv": "^17.2.2"
   }
 }

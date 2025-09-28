@@ -7,6 +7,7 @@
 	}
 
 	const { image, name }: Props = $props();
+	console.log(image)
 </script>
 
 <div class="list">

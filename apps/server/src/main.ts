@@ -10,6 +10,7 @@ async function bootstrap() {
     },
   });
   app.setGlobalPrefix('api');
+  console.log(process.env)
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap().catch((err) => {

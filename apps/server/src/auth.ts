@@ -1,1 +1,1 @@
-export { auth } from 'common/auth.ts';
+export { auth } from 'common/auth';
