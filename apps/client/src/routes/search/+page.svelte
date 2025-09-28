@@ -3,6 +3,7 @@
 	import InfiniteScroll from '$lib/components/Infinite_Scroll.svelte';
 	import { PUBLIC_BASE_URL } from '$env/static/public';
 	import { getTrending } from '$lib/shows';
+	import Filter from '$lib/components/Filter.svelte';
 
 	console.log('init search');
 
@@ -15,6 +16,10 @@
 
 <a href="/auth">login</a>
 <h1>Search</h1>
+<div class="filter">
+	<Filter isActive={true}>Films</Filter>
+	<Filter isActive={false}>Series</Filter>
+</div>
 <!-- <SearchList isActive={true}>Oshi no Ko</SearchList> -->
 <div class="wrapper">
 	{#if shows}
@@ -54,5 +59,8 @@
 		flex-direction: column;
 		gap: 1em;
 		padding: 1em;
+	}
+	.filter{
+		display: flex;
 	}
 </style>
